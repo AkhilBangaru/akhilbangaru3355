@@ -131,7 +131,7 @@ const Certifications = () => {
                         highlight={true}
                         theme="gold"
                         delay={0.2}
-                        imageUrl="/my_pjpt_cert_public-1.png"
+                        imageUrl={process.env.PUBLIC_URL + "/my_pjpt_cert_public-1.png"}
                         credentialUrl="https://certified.tcm-sec.com/63541ac9-3c18-4ee1-8110-aad83fa8b526#acc.RS32OfJw"
                     />
                     <CertificationCard
@@ -142,7 +142,7 @@ const Certifications = () => {
                         highlight={true}
                         theme="gold"
                         delay={0.3}
-                        imageUrl="/chaitanya-venkata-sai-akhil-bangaru-e0bc9df1-9094-4f59-af2d-ad0d94a9b4d4-certificate-1.png"
+                        imageUrl={process.env.PUBLIC_URL + "/chaitanya-venkata-sai-akhil-bangaru-e0bc9df1-9094-4f59-af2d-ad0d94a9b4d4-certificate-1.png"}
                         credentialUrl="https://learn.educate360.com/c/4Lyd8ZCUT1mvLa0NlKm01A"
                     />
                     <CertificationCard
