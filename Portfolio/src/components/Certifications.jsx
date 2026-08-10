@@ -2,18 +2,18 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Award, Target, ArrowRight } from 'lucide-react';
 
-const CertificationCard = ({ title, issuer, status, progress, theme, delay }) => {
+const CertificationCard = ({ title, issuer, status, progress, description, theme, delay, highlight, imageUrl, credentialUrl }) => {
     // Explicitly define styles to ensure Tailwind generates the classes
     const styles = theme === 'gold'
         ? {
-            wrapper: "bg-[#0a0a0a] border border-gold/20 hover:border-gold/50",
+            wrapper: `bg-[#0a0a0a] border ${highlight ? 'border-gold/80 shadow-[0_0_20px_rgba(255,215,0,0.15)]' : 'border-gold/20'} hover:border-gold/50`,
             iconBg: "bg-gold/10",
             iconColor: "text-gold",
             badge: "bg-gold/10 text-gold border-gold/20",
             progressBg: "bg-gold"
         }
         : {
-            wrapper: "bg-[#0a0a0a] border border-green-500/20 hover:border-green-500/50",
+            wrapper: `bg-[#0a0a0a] border ${highlight ? 'border-green-500/80 shadow-[0_0_20px_rgba(34,197,94,0.15)]' : 'border-green-500/20'} hover:border-green-500/50`,
             iconBg: "bg-green-500/10",
             iconColor: "text-green-500",
             badge: "bg-green-500/10 text-green-500 border-green-500/20",
@@ -25,7 +25,7 @@ const CertificationCard = ({ title, issuer, status, progress, theme, delay }) =>
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className={`${styles.wrapper} rounded-xl p-6 transition-all group border`}
         >
             <div className="flex justify-between items-start mb-4">
@@ -59,8 +59,20 @@ const CertificationCard = ({ title, issuer, status, progress, theme, delay }) =>
 
             {progress === undefined && (
                 <p className="text-gray-500 text-sm">
-                    Continuous learning platform for cybersecurity skills
+                    {description || "Continuous learning platform for cybersecurity skills"}
                 </p>
+            )}
+
+            {imageUrl && (
+                <div className="mt-6 border border-gold/20 rounded-lg overflow-hidden group-hover:border-gold/50 transition-colors">
+                    <img src={imageUrl} alt={`${title} certificate`} className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                </div>
+            )}
+
+            {credentialUrl && (
+                <a href={credentialUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-4 text-gold hover:text-white transition-colors text-sm font-mono">
+                    View Credential <ArrowRight className="w-4 h-4" />
+                </a>
             )}
         </motion.div>
     );
@@ -71,7 +83,7 @@ const FutureGoal = ({ name, delay }) => (
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         className="flex items-center gap-4 bg-[#0a0a0a] border border-gray-800 p-4 rounded-lg hover:border-gold/30 transition-colors group"
     >
         <div className="p-2 rounded-md bg-gray-900 group-hover:bg-gold/10 transition-colors">
@@ -110,14 +122,36 @@ const Certifications = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-16">
+                <div className="grid grid-cols-1 gap-8 mb-16">
                     <CertificationCard
                         title="PJPT - Practical Junior Penetration Tester"
                         issuer="TCM Security"
-                        status="In Progress"
-                        progress={65}
+                        status="Completed"
+                        description="Successfully completed the practical exam."
+                        highlight={true}
                         theme="gold"
                         delay={0.2}
+                        imageUrl="/my_pjpt_cert_public-1.png"
+                        credentialUrl="https://certified.tcm-sec.com/63541ac9-3c18-4ee1-8110-aad83fa8b526#acc.RS32OfJw"
+                    />
+                    <CertificationCard
+                        title="PEH - Practical Ethical Hacking"
+                        issuer="TCM Security"
+                        status="Completed"
+                        description="Comprehensive course covering ethical hacking, networking, and practical penetration testing."
+                        highlight={true}
+                        theme="gold"
+                        delay={0.3}
+                        imageUrl="/chaitanya-venkata-sai-akhil-bangaru-e0bc9df1-9094-4f59-af2d-ad0d94a9b4d4-certificate-1.png"
+                        credentialUrl="https://learn.educate360.com/c/4Lyd8ZCUT1mvLa0NlKm01A"
+                    />
+                    <CertificationCard
+                        title="CPTS - Certified Penetration Testing Specialist"
+                        issuer="Hack The Box"
+                        status="In Progress"
+                        progress={25}
+                        theme="gold"
+                        delay={0.25}
                     />
                     <CertificationCard
                         title="TryHackMe"
@@ -132,6 +166,7 @@ const Certifications = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true, amount: 0.1 }}
                     className="border border-gold/20 rounded-2xl p-8 bg-gradient-to-b from-transparent to-gold/5"
                 >
                     <div className="flex items-center gap-3 mb-8">
@@ -143,14 +178,6 @@ const Certifications = () => {
                         <FutureGoal
                             name="OSCP - Offensive Security Certified Professional"
                             delay={0.5}
-                        />
-                        <FutureGoal
-                            name="CEH - Certified Ethical Hacker"
-                            delay={0.6}
-                        />
-                        <FutureGoal
-                            name="CRTP - Certified Red Team Professional"
-                            delay={0.7}
                         />
                     </div>
                 </motion.div>
