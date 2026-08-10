@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Award, Target, ArrowRight } from 'lucide-react';
+import pjptImage from '../assets/pjpt-cert.png';
+import pehImage from '../assets/peh-cert.png';
 
 const CertificationCard = ({ title, issuer, status, progress, description, theme, delay, highlight, imageUrl, credentialUrl }) => {
     // Explicitly define styles to ensure Tailwind generates the classes
@@ -131,7 +133,7 @@ const Certifications = () => {
                         highlight={true}
                         theme="gold"
                         delay={0.2}
-                        imageUrl={process.env.PUBLIC_URL + "/my_pjpt_cert_public-1.png"}
+                        imageUrl={pjptImage}
                         credentialUrl="https://certified.tcm-sec.com/63541ac9-3c18-4ee1-8110-aad83fa8b526#acc.RS32OfJw"
                     />
                     <CertificationCard
@@ -142,7 +144,7 @@ const Certifications = () => {
                         highlight={true}
                         theme="gold"
                         delay={0.3}
-                        imageUrl={process.env.PUBLIC_URL + "/chaitanya-venkata-sai-akhil-bangaru-e0bc9df1-9094-4f59-af2d-ad0d94a9b4d4-certificate-1.png"}
+                        imageUrl={pehImage}
                         credentialUrl="https://learn.educate360.com/c/4Lyd8ZCUT1mvLa0NlKm01A"
                     />
                     <CertificationCard
