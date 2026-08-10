@@ -43,7 +43,7 @@ const Navbar = () => {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-5">
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
@@ -67,7 +67,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-gold text-black font-mono text-sm uppercase tracking-wider rounded-full hover:bg-gold/90 transition-colors"
+            className="hidden lg:flex items-center gap-2 px-5 py-2.5 bg-gold text-black font-mono text-sm uppercase tracking-wider rounded-full hover:bg-gold/90 transition-colors"
           >
             View GitHub
           </motion.a>
@@ -75,7 +75,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2"
+            className="lg:hidden text-white p-2"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -89,7 +89,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 backdrop-blur-md border-t border-gold/20"
+            className="lg:hidden bg-black/95 backdrop-blur-md border-t border-gold/20"
           >
             <div className="px-6 py-6 space-y-4">
               {navLinks.map((link, index) => (
