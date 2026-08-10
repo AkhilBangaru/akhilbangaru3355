@@ -26,8 +26,8 @@ const AboutSection = () => {
     },
     {
       icon: Award,
-      title: 'PJPT Certification',
-      description: 'Currently pursuing Practical Junior Penetration Tester cert'
+      title: 'CPTS Certification',
+      description: 'Currently preparing for Certified Penetration Testing Specialist'
     }
   ];
 
