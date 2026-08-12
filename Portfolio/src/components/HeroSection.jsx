@@ -99,7 +99,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-28 pb-32 md:pt-0 md:pb-0">
       {/* Matrix Rain Background */}
       <MatrixRain />
       
