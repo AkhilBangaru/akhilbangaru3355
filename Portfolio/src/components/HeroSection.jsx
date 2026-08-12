@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Github, Linkedin, Instagram, Mail, Terminal } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Instagram, Mail, Terminal, FileText } from 'lucide-react';
 import { personalInfo, heroTypingTexts, stats } from '../data/mock';
 
 const TypeWriter = ({ texts, speed = 50, deleteSpeed = 30, pauseTime = 2000 }) => {
@@ -191,30 +191,44 @@ const HeroSection = () => {
           ))}
         </motion.div>
 
-        {/* Social Links */}
+        {/* Resume & Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex justify-center gap-4"
+          className="flex flex-col items-center gap-8"
         >
-          {socialLinks.map((social, index) => (
-            <motion.a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-12 h-12 flex items-center justify-center bg-black/50 border border-gold/30 rounded-full text-gray-400 hover:text-gold hover:border-gold hover:bg-gold/10 transition-all"
-              aria-label={social.label}
-            >
-              <social.icon className="w-5 h-5" />
-            </motion.a>
-          ))}
+          {/* Resume Button */}
+          <a
+            href="https://drive.google.com/file/d/1N_D0hqyAQKjvXVHGTek9pAoq-uf6dZ1V/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-8 py-3 border border-gold text-gold font-mono text-sm uppercase tracking-wider rounded-xl hover:bg-gold/10 transition-colors"
+          >
+            <FileText className="w-4 h-4" />
+            View Resume
+          </a>
+
+          {/* Social Links */}
+          <div className="flex justify-center gap-4">
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 flex items-center justify-center bg-black/50 border border-gold/30 rounded-full text-gray-400 hover:text-gold hover:border-gold hover:bg-gold/10 transition-all"
+                aria-label={social.label}
+              >
+                <social.icon className="w-5 h-5" />
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
       </div>
 
