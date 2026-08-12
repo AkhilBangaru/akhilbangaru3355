@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
   Mail, Github, Linkedin, Instagram, Send, MapPin, Terminal, 
-  ArrowRight, Copy, Check
+  ArrowRight, Copy, Check, FileText
 } from 'lucide-react';
 import { personalInfo } from '../data/mock';
 
@@ -125,7 +125,7 @@ const ContactSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center gap-4 mb-10"
+              className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mb-10"
             >
               <button
                 onClick={copyEmail}
@@ -146,6 +146,15 @@ const ContactSection = () => {
                 <Send className="w-4 h-4" />
                 Send Email
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a
+                href="https://drive.google.com/file/d/1N_D0hqyAQKjvXVHGTek9pAoq-uf6dZ1V/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-8 py-4 bg-transparent border border-gold text-gold font-mono text-sm uppercase tracking-wider rounded-xl hover:bg-gold/10 transition-colors group w-full sm:w-auto justify-center"
+              >
+                <FileText className="w-4 h-4" />
+                View Resume
               </a>
             </motion.div>
 
